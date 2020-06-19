@@ -1,0 +1,135 @@
+@charset 'utf-8';
+@font-face { font-family: 'BRBA_B'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/BRBA_B.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+@import "_reset";
+@import "_variables";
+@import "_common";
+@import "partials/header";
+
+#mainBox {
+    min-height: 100vh; position: relative; margin-top: -80px; padding: 150px 0px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;
+
+    > .inner {
+        display: flex; flex-direction: column; justify-content: center;
+
+        h1 {
+            font-size: map-get($fontSize, mainTitle); margin-bottom: 40px;
+
+            +p {
+                font-size: 32px; margin-bottom: 40px;
+            }
+        }
+
+        > .btn-start {
+            padding: 0.75em 1.5em; background-color: map-get($color,primary); color: #fff; width: auto; align-self: flex-start; border-radius: 8px; font-size: 20px; 
+        }
+
+        > .pic {
+            position: absolute; width: 500px; height: 800px; margin-left: 50px; background-color: #fa0; bottom: -400px; left: 50%; pointer-events: none; z-index: 10;
+        }
+    }
+}
+
+#introduceBox {
+    min-height: 100vh; background-color: lighten(map-get($color,primary), 35%); padding: 150px 0px; box-sizing: border-box; transition: all 500ms; display: flex; justify-content: center; align-items: center;
+
+    &.scrolling {
+        transform : skewY(-10deg);
+    }
+
+    &.on {
+
+    }
+
+    .inner {
+        display: flex; flex-direction: column; justify-content: center;
+        
+        h1 {
+            font-size: map-get($fontSize, subTitle); margin-bottom: 40px;
+        }
+
+        .desc {
+            li {
+                font-size: 20px;
+
+                + li {
+                    margin-top: 10px;
+                }
+
+                &::before {
+                    content: "-";
+                }
+            }
+        }
+    }
+}
+
+#howtoBox {
+    min-height: 100vh; padding: 150px 0px; box-sizing: border-box;
+
+    .inner {
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        
+        h1 {
+            font-size: map-get($fontSize, subTitle); margin-bottom: 40px;
+        }
+    }
+}
+
+#usecaseBox {
+    min-height: 100vh; background-color: lighten(map-get($color,primary), 30%); display: flex; justify-content: center; flex-direction: column; padding: 150px 0px; box-sizing: border-box; transition: all 500ms;
+
+    &.scrolling {
+        transform : skewY(-10deg);
+    }
+
+    .inner {
+        height: auto; display: flex; flex-wrap: wrap;
+
+        h1 {
+            width: 100%; font-size: 36px; margin-bottom: 40px;
+        }
+
+        > .list_benefit {
+            width: 40%;
+
+            > li {
+                border-radius: 8px; padding: 20px; transition: all 600ms; display: flex; align-items: center;
+
+                > .pic {
+                    width: 80px; height: 80px; background-color: #fa0; margin-right: 20px; border-radius: 8px;
+                }
+
+                + li {
+                    margin-top: 30px;
+                }
+
+                &:hover {
+                    box-shadow: 8px 8px 24px rgba(0,0,0,0.3); 
+                }
+            }
+        }
+
+        > .pic_box {
+            width: 60%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center;
+
+            .pic_wrap {
+                width: 320px; height: 240px; background-color: map-get($color, primary); position: relative; border-radius: 16px; transform: rotate(10deg) translateY(10px);
+
+                .pic {
+                    width: 100%; height: 100%; position: absolute; top: -50px; left: -60px; background-color: #fff; box-shadow: 8px 8px 24px rgba(0,0,0,0.3); transform: rotate(-10deg) translate(-10px, -10px);
+                }
+            }
+        }
+     }
+}
+
+#exampleBox {
+    height: 100vh;
+
+    .inner {
+        display: flex; justify-content: center; align-items: center;
+    }
+}
+
+@import "partials/footer";

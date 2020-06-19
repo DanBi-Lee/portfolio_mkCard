@@ -1,0 +1,39 @@
+{
+  "name": "supergulp",
+  "version": "1.0.0",
+  "description": "learn gulp",
+  "repository": "https://github.com/DanBi-Lee/studyGulp.git",
+  "author": "LeeDanBi <goldq0531@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build",
+    "deploy": "gulp deploy"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-image": "^6.2.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-webserver": "^0.9.1"
+  },
+  "dependencies": {
+    "babelify": "^10.0.0",
+    "gift": "0.10.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-bro": "^2.0.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-html-tag-include": "^1.0.1",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^4.14.1",
+    "uglifyify": "^5.0.2"
+  },
+  "browserslist": [
+    "defaults",
+    "last 2 versions"
+  ]
+}
