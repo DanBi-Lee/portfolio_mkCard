@@ -3,3 +3,4 @@
 ## 사용 JS
 
 - dom-to-image : (https://github.com/tsayen/dom-to-image)
+- FileSaver : (https://github.com/eligrey/FileSaver.js/)

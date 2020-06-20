@@ -1,12 +1,16 @@
 <include src="./partials/common/head.html" styleUrl="./css/mkimage.css" title="이미지 제작"></include>
 <include src="./partials/header.html"></include>
-
+<section id="howtoBox">
+    <div class="inner">
+        <h1 class="hidden">test</h1>
+    </div>
+</section>
 <section id="mkimageBox">
     <div class="inner">
         <h1 class="hidden">이미지 만들기</h1>
         <div class="option">
             <ul class="step_list">
-                <li>
+                <li class="on">
                     <button>텍스트</button>
                 </li>
                 <li>
@@ -20,18 +24,63 @@
                 </li>
             </ul>
             <ul class="option_box">
-                <li class="text_box"></li>
-                <li class="image_box"></li>
-                <li class="font_box"></li>
-                <li class="color_box"></li>
+                <li class="on">
+                    <article class="text_box">
+                        <form action="#">
+                            <fieldset>
+                                <legend class="hidden">이미지 텍스트</legend>
+                                <ul>
+                                    <li>
+                                        <label for="inputMainText">메인 텍스트</label>
+                                        <input type="text" id="inputMainText" name="inputMainText">
+                                    </li>
+                                    <li>
+                                        <label for="inputSubText">서브 텍스트</label>
+                                        <input type="text" id="inputSubText" name="inputSubText">
+                                    </li>
+                                </ul>
+                                <button type="reset" class="reset btn">텍스트 지우기</button>
+                            </fieldset>
+                        </form>
+                    </article>
+                </li>
+                <li>
+                    <article class="image_box">
+
+                    </article>
+                </li>
+                <li>
+                    <article class="font_box">
+
+                    </article>
+                </li>
+                <li class="color_box">
+                    <article>
+
+                    </article>
+                </li>
             </ul>
         </div>
         <div class="preview">
-
+            <img src="" alt="" id="imgPreview">
+            <button class="download btn">이미지 저장</button>
+        </div>
+    </div>
+    <div class="mk_img_dom">
+        <div class="card">
+            <div class="card_img"></div>
+            <div class="card_content">
+                <div class="text">
+                    <strong class="title">이게 뭐가 문제지?</strong>
+                    <p class="desc">test</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <include src="./partials/footer.html"></include>
+<script src="js/lib/dom-to-image.min.js"></script>
+<script src="js/lib/FileSaver.min.js"></script>
 <script src="js/mkimage.js"></script>
 <include src="./partials/common/foot.html"></include>
