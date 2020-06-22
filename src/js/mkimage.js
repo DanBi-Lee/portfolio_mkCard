@@ -40,4 +40,60 @@ $btnList.on('click', function(e){
   $this.addClass('on');
 });
 
-var imageData = {};
+(function(){
+  var imageData = {
+    text : {
+      main : '메인 텍스트 예시입니다',
+      sub : '서브 텍스트 예시입니다'
+    },
+    img : 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60',
+    font : {
+      main : 'CookieRun-Regular',
+      sub : 'Godo'
+    },
+    filter : {
+      grayscale : 0,
+      blur : 0,
+      invert : 0,
+      contrast: 1,
+      sepia : 0
+    },
+    filterBox : {
+      opacity : 0.3,
+      color : '#ffffff'
+    }
+  };
+
+  var inputDom = {
+    text : {
+      main : '#inputMainText',
+      sub : '#inputSubText'
+    }
+  };
+
+  var outputDom = {
+    text : {
+      main : '.title',
+      sub : '.desc'
+    }
+  }
+
+  function bindingEvent(){
+    changeText('main');
+    changeText('sub');
+  }
+
+  bindingEvent();
+
+  function changeText(data){
+    $(inputDom['text'][data]).on('focusout', function(){
+      imageData['text'][data] = $(this).attr('value');
+      $('#mkimageBox .card').find(outputDom['text'][data]).text(imageData['text'][data]);
+      render(card);
+    });
+  }
+
+
+
+})();
+

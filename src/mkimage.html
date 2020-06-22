@@ -10,10 +10,10 @@
         <h1 class="hidden">이미지 만들기</h1>
         <div class="option">
             <ul class="step_list">
-                <li class="on">
+                <li>
                     <button>텍스트</button>
                 </li>
-                <li>
+                <li class="on">
                     <button>이미지</button>
                 </li>
                 <li>
@@ -46,12 +46,40 @@
                 </li>
                 <li>
                     <article class="image_box">
-
+                        <div class="header_imgbox">
+                            <form action="#" class="upload_img">
+                                <fieldset>
+                                    <legend class="hidden">
+                                        이미지 파일 올리기
+                                    </legend>
+                                    <input type="file" name="uploadImgfile" id="uploadImgfile" class="hidden">
+                                    <label for="uploadImgfile">이미지 파일 올리기</label>
+                                </fieldset>
+                            </form>
+                            <form action="#" class="search_img">
+                                <fieldset>
+                                    <legend class="hidden">
+                                        이미지 검색
+                                    </legend>
+                                    <div class="wrap">
+                                        <input type="search" id="searchImg">
+                                      <button type="submit">
+                                          <span class="hidden">검색</span>
+                                          <i class="fas fa-search"></i>
+                                        </button>
+                                     </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="contents_imgbox">
+                            이미지를 검색하거나 <br>
+                            직접 이미지 파일을 업로드할 수 있습니다.
+                        </div>
                     </article>
                 </li>
                 <li>
                     <article class="font_box">
-
+                        
                     </article>
                 </li>
                 <li class="color_box">
@@ -71,8 +99,8 @@
             <div class="card_img"></div>
             <div class="card_content">
                 <div class="text">
-                    <strong class="title">이게 뭐가 문제지?</strong>
-                    <p class="desc">test</p>
+                    <strong class="title">이게 뭐가 문제지? 이게 뭐가 문제지?</strong>
+                    <p class="desc">ist it only ENGLISH ?! NOT KOREAN ?! ist it only ENGLISH ?! NOT KOREAN ?! ist it only ENGLISH ?! NOT KOREAN ?!</p>
                 </div>
             </div>
         </div>
@@ -80,7 +108,7 @@
 </section>
 
 <include src="./partials/footer.html"></include>
-<script src="js/lib/dom-to-image.min.js"></script>
+ <script src="js/lib/dom-to-image-more.min.js"></script>
 <script src="js/lib/FileSaver.min.js"></script>
 <script src="js/mkimage.js"></script>
 <include src="./partials/common/foot.html"></include>
