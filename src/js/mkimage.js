@@ -23,3 +23,21 @@ $('.download').on('click', function(){
     return console.error(error);
   });
 });
+
+var $btnList = $mkimageBox.find('.step_list > li');
+var $optionBox = $mkimageBox.find('.option_box > li');
+
+$btnList.on('click', function(e){
+  e.preventDefault();
+
+  var $this = $(this);
+  var index = $this.index();
+
+  $optionBox.removeClass('on')
+  $optionBox.eq(index).addClass('on');
+
+  $btnList.removeClass('on');
+  $this.addClass('on');
+});
+
+var imageData = {};
