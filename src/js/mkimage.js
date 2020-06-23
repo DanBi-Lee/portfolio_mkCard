@@ -26,19 +26,27 @@ $('.download').on('click', function(){
 
 var $btnList = $mkimageBox.find('.step_list > li');
 var $optionBox = $mkimageBox.find('.option_box > li');
+Tabmenu($btnList, $optionBox);
 
-$btnList.on('click', function(e){
-  e.preventDefault();
+var $fontBox = $mkimageBox.find('.font_box');
+var $btnFontList = $fontBox.find('.header_font > li');
+var $boxFontList = $fontBox.find('.content_font > li');
+Tabmenu($btnFontList, $boxFontList);
 
-  var $this = $(this);
-  var index = $this.index();
-
-  $optionBox.removeClass('on')
-  $optionBox.eq(index).addClass('on');
-
-  $btnList.removeClass('on');
-  $this.addClass('on');
-});
+function Tabmenu(button, box){
+    button.on('click', function(e){
+      e.preventDefault();
+    
+      var $this = $(this);
+      var index = $this.index();
+    
+      box.removeClass('on')
+      box.eq(index).addClass('on');
+    
+      button.removeClass('on');
+      $this.addClass('on');
+    });
+}
 
 (function(){
 
@@ -73,6 +81,10 @@ $btnList.on('click', function(e){
     img : {
       upload : '#uploadImgfile',
       search : $('#searchImg')
+    },
+    font : {
+        main : $('.main'),
+        sub : $('.sub')
     }
   };
 
@@ -83,6 +95,10 @@ $btnList.on('click', function(e){
     },
     img : {
         upload : '.card_img'
+    },
+    font : {
+        main : '.title',
+        sub : '.desc'
     }
   }
 
@@ -90,6 +106,7 @@ $btnList.on('click', function(e){
     changeText('main');
     changeText('sub');
     changeImg();
+    mkFontDom();
   }
 
   bindingEvent();
@@ -172,6 +189,7 @@ function selectImg(){
     $('.contents_imgbox').on('click','.search_item', function(e){
         e.preventDefault();
         imageData.img = $(this).attr('data-img');
+        console.log($(this));
         // $('.card_img').css({
         //     backgroundImage : 'url(' + imageData.img + ')'
         // });
@@ -195,6 +213,46 @@ function mkDom(){
         });
     }
     img();
+
+    // 폰트
+    function font(data){
+      $('#mkimageBox .card').find(outputDom['font'][data]).css('font-family', imageData['font'][data]);
+    }
+
+    font('main');
+    font('sub');
+}
+
+function mkFontDom(){
+  $(fontList.fontlist).each(function(index, item){
+    var fontFamily = item.code;
+    var fontName = item.name;
+    $('.content_font').find('ul')
+      .append(
+        $('<li>')
+          .addClass('items')
+          .append(
+            $('<button>')
+              .text(fontName)
+          )
+          .attr('data-font', fontFamily)
+          .css('font-family', fontFamily)
+      );
+  });
+
+  changeFont('main');
+  changeFont('sub');
+}
+
+function changeFont(data){
+    console.log(inputDom['font'][data]);
+    inputDom['font'][data].on('click', '.font_list > li' , function(e){
+        e.preventDefault();
+        imageData['font'][data] = $(this).attr('data-font');
+        console.log(imageData['font'][data]);
+        mkDom();
+        render(card);
+      });
 }
 
 })();

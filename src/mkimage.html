@@ -44,7 +44,7 @@
                         </form>
                     </article>
                 </li>
-                <li class="on">
+                <li>
                     <article class="image_box">
                         <div class="header_imgbox">
                             <form action="#" class="upload_img">
@@ -80,9 +80,32 @@
                         </div>
                     </article>
                 </li>
-                <li>
+                <li class="on">
                     <article class="font_box">
-                        
+                        <ul class="header_font">
+                            <li class="on">
+                                <button class="btn">
+                                    메인
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn">
+                                    서브
+                                </button>
+                            </li>
+                        </ul>
+                        <ul class="content_font">
+                            <li class="main on">
+                                <ul class="font_list">
+
+                                </ul>
+                            </li>
+                            <li class="sub">
+                                <ul class="font_list">
+                                    
+                                </ul>
+                            </li>
+                        </ul>
                     </article>
                 </li>
                 <li class="color_box">
@@ -99,7 +122,9 @@
     </div>
     <div class="mk_img_dom">
         <div class="card">
-            <div class="card_img"></div>
+            <div class="card_img">
+                <div class="bg_color"></div>
+            </div>
             <div class="card_content">
                 <div class="text">
                     <strong class="title">제목</strong>
@@ -111,7 +136,8 @@
 </section>
 
 <!-- <include src="./partials/footer.html"></include> -->
- <script src="js/lib/dom-to-image-more.min.js"></script>
+ <script src="js/lib/dom-to-image.min.js"></script>
 <script src="js/lib/FileSaver.min.js"></script>
+<script src="js/fonts.js"></script>
 <script src="js/mkimage.js"></script>
 <include src="./partials/common/foot.html"></include>

@@ -1,4 +1,4 @@
-{"fontlist" : [
+var fontList = {"fontlist" : [
             {
                 "name": "쿠키런",
                 "code": "CookieRun-Regular",
@@ -46,4 +46,4 @@
                 "type" : "고딕"
             }
     ]
-}
+};

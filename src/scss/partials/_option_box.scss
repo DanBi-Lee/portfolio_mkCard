@@ -85,7 +85,62 @@
     }
 
     .font_box {
+        padding: 20px; box-sizing: border-box; display: flex; flex-direction: column;
 
+        .header_font {
+            width: 100%; max-width: 600px; margin: 0 auto;   padding: 10px; border-radius: 4px; box-sizing: border-box; margin-bottom: 20px; display: flex;
+
+            > li {
+                width: 100%; color: #6d78b5;
+
+                + li {
+                    margin-left: 10px;
+                }
+
+                &.on {
+                    > button {
+                        background-color: #cad6e8; color: #fff;
+                    }
+                }
+
+                > button {
+                    width: 100%; height: 100%;
+                }
+            }
+        }
+        .content_font {
+            max-width: 600px; margin: 0 auto; width: 100%; height: 100%; min-height: 200px; text-align: center; border: 1px solid #fff; background-color: #ecf0f3; overflow-y: auto; position: relative;
+
+            > li {
+                width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; display: none;
+
+                &.on {
+                    display: block;
+                }
+
+                .font_list {
+                    padding: 20px; box-sizing: border-box; 
+
+                    > li {
+                        max-width: 400px; color: #6d78b5; margin: 0px auto;
+
+                        + li {
+                            margin-top: 16px;
+                        }
+
+                        &:hover, &.on {
+                            > button {
+                                background-color: #6d78b5; color: #fff;
+                            }
+                        }
+
+                        >  button {
+                            width: 100%; height: 100%;  border: 1px solid; border-radius: 4px; padding: 0.8em; box-sizing: border-box; font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .color_box {
