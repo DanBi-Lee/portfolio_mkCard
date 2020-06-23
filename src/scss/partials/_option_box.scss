@@ -61,7 +61,26 @@
             }
         }
         .contents_imgbox {
-            max-width: 600px; margin: 0 auto; width: 100%; height: 100%; min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 1px solid #fff; background-color: #ecf0f3; overflow-y: auto;
+            max-width: 600px; margin: 0 auto; width: 100%; height: 100%; min-height: 200px; text-align: center; border: 1px solid #fff; background-color: #ecf0f3; overflow-y: auto; position: relative;
+
+            > p {
+                position: absolute; top: 50%; left: 0px; width: 100%; transform: translateY(-50%);
+                > a {
+                    display: inline-block; text-decoration: underline; color: map-get($color, primary);
+                }
+            }
+
+            > ul {
+                width: 100%; height: auto; display: flex; flex-wrap: wrap; padding: 10px; box-sizing: border-box;
+
+                > li {
+                    width: 31.333%; background-color: #fa0; margin: 1%; padding-top: 16%; position: relative;
+
+                    .search_item {
+                        position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-repeat: no-repeat; background-size: cover; background-position: center; border: none;
+                    }
+                }
+            }
         }
     }
 

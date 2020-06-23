@@ -41,12 +41,13 @@ $btnList.on('click', function(e){
 });
 
 (function(){
+
   var imageData = {
     text : {
-      main : '메인 텍스트 예시입니다',
-      sub : '서브 텍스트 예시입니다'
+      main : '',
+      sub : ''
     },
-    img : 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60',
+    img : '',
     font : {
       main : 'CookieRun-Regular',
       sub : 'Godo'
@@ -68,6 +69,10 @@ $btnList.on('click', function(e){
     text : {
       main : '#inputMainText',
       sub : '#inputSubText'
+    },
+    img : {
+      upload : '#uploadImgfile',
+      search : $('#searchImg')
     }
   };
 
@@ -75,25 +80,122 @@ $btnList.on('click', function(e){
     text : {
       main : '.title',
       sub : '.desc'
+    },
+    img : {
+        upload : '.card_img'
     }
   }
 
   function bindingEvent(){
     changeText('main');
     changeText('sub');
+    changeImg();
   }
 
   bindingEvent();
 
   function changeText(data){
     $(inputDom['text'][data]).on('focusout', function(){
-      imageData['text'][data] = $(this).attr('value');
-      $('#mkimageBox .card').find(outputDom['text'][data]).text(imageData['text'][data]);
-      render(card);
+    imageData['text'][data] = $(this).attr('value');
+    //   $('#mkimageBox .card').find(outputDom['text'][data]).text(imageData['text'][data]);
+    mkDom();
+    render(card);
     });
   }
 
+  function changeImg(){
+    uploadFile('upload');
+    searchImg('search');
+  }
 
+  function uploadFile(data){
+    $(inputDom['img'][data]).on('change', function(e){
+        var file = e.target.files[0];
+        if(!file.type.match(/image.*/)){
+            alert("이미지 파일만 올려주세요");
+            return;
+        }else{
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                imageData.img = e.target.result;
+                // $(outputDom['img'][data]).css({
+                //     backgroundImage : 'url(' + imageData.img + ')'
+                // });
+                mkDom();
+                render(card);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+function searchImg(data){
+    inputDom['img'][data].siblings('button').on('click',function(e){
+        e.preventDefault();
+        console.log($(this));
+        var _key = '17163984-867a8b6f54b9fd842905aca26';
+        var _keyword = inputDom['img'][data].attr('value');
+        var settings = {
+            "url": "https://pixabay.com/api/?key=" + _key + "&q=" + _keyword + "&per_page=33",
+            "method": "GET",
+            "timeout": 0,
+            "dataType" : "jsonp"
+          };
+          $.ajax(settings).done(function (response) {
+            console.log(settings.url);
+            if(response.total == 0){
+                $('.contents_imgbox').find('p').text( _keyword + '에 대한 검색결과가 없습니다.');
+            }else{
+                $('.contents_imgbox').html('<ul>');
+                $(response.hits).each(function(index, item){
+                    var prev_img = item.previewURL;
+                    var data_img = item.largeImageURL;
+                    $('.contents_imgbox > ul').append(
+                        $('<li>')
+                            .append(
+                                $('<button>')
+                                    .css({
+                                    backgroundImage : 'url(' + prev_img + ')'
+                                    })
+                                    .addClass('search_item')
+                                    .attr('data-img', data_img)
+                            )
+                    );
+                });
+            }
+          });
+    });
+    selectImg();
+}
+
+function selectImg(){
+    $('.contents_imgbox').on('click','.search_item', function(e){
+        e.preventDefault();
+        imageData.img = $(this).attr('data-img');
+        // $('.card_img').css({
+        //     backgroundImage : 'url(' + imageData.img + ')'
+        // });
+        mkDom();
+        render(card);
+    });
+}
+
+function mkDom(){
+    // 텍스트
+    function text(data){
+        $('#mkimageBox .card').find(outputDom['text'][data]).text(imageData['text'][data]);
+    }
+    text('main');
+    text('sub');
+
+    // 배경이미지
+    function img(){
+        $('.card_img').css({
+            backgroundImage : 'url(' + imageData.img + ')'
+        });
+    }
+    img();
+}
 
 })();
 
