@@ -54,7 +54,7 @@
                 </li>
             </ul>
             <ul class="option_box">
-                <li class="on">
+                <li>
                     <article class="text_box">
                         <form action="#">
                             <fieldset>
@@ -102,14 +102,40 @@
                             </form>
                         </div>
                         <div class="contents_imgbox">
-                            이미지를 검색하거나 <br>
-                            직접 이미지 파일을 업로드할 수 있습니다.
+                            <p>
+                                이미지를 검색하거나 <br>
+                                직접 이미지 파일을 업로드할 수 있습니다. <br>
+                                <a href="https://pixabay.com/ko/" target="_blank">Photo by pixabay</a>
+                            </p>
                         </div>
                     </article>
                 </li>
-                <li>
+                <li class="on">
                     <article class="font_box">
-                        
+                        <ul class="header_font">
+                            <li class="on">
+                                <button class="btn">
+                                    메인
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn">
+                                    서브
+                                </button>
+                            </li>
+                        </ul>
+                        <ul class="content_font">
+                            <li class="main on">
+                                <ul class="font_list">
+
+                                </ul>
+                            </li>
+                            <li class="sub">
+                                <ul class="font_list">
+                                    
+                                </ul>
+                            </li>
+                        </ul>
                     </article>
                 </li>
                 <li class="color_box">
@@ -126,11 +152,13 @@
     </div>
     <div class="mk_img_dom">
         <div class="card">
-            <div class="card_img"></div>
+            <div class="card_img">
+                <div class="bg_color"></div>
+            </div>
             <div class="card_content">
                 <div class="text">
-                    <strong class="title">이게 뭐가 문제지? 이게 뭐가 문제지?</strong>
-                    <p class="desc">ist it only ENGLISH ?! NOT KOREAN ?! ist it only ENGLISH ?! NOT KOREAN ?! ist it only ENGLISH ?! NOT KOREAN ?!</p>
+                    <strong class="title">제목</strong>
+                    <p class="desc">요약 텍스트</p>
                 </div>
             </div>
         </div>
@@ -152,8 +180,9 @@
          </small>
      </div>
  </footer> -->
- <script src="js/lib/dom-to-image-more.min.js"></script>
+ <script src="js/lib/dom-to-image.min.js"></script>
 <script src="js/lib/FileSaver.min.js"></script>
+<script src="js/fonts.js"></script>
 <script src="js/mkimage.js"></script>
 </body>
 </html>
