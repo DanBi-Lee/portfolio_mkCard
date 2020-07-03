@@ -1,11 +1,12 @@
 var $boxs = $('[id$="Box"]');
 var posArr = [];
+var posRange = 100;
 
 $boxs.each(function(){
     posArr.push($(this).offset().top);
 });
 
-posArr.push( $boxs.last().offset().top + $boxs.last().outerHeight() );
+posArr.push( $boxs.last().offset().top + $boxs.last().outerHeight() + posRange );
 
 $(window).on('scroll', function(){
     var scroll = $(this).scrollTop();
@@ -18,9 +19,15 @@ $(window).on('scroll', function(){
     }, 250);
 
     for(var i =0; i < posArr.length; i++){
-        if( scroll >= posArr[i] && scroll < posArr[i+1] ){
+        if( scroll >= posArr[i] - posRange && scroll < posArr[i+1] - posRange ){
             $boxs.removeClass('on');
             $boxs.eq(i).addClass('on');
+
+            if($('#introduceBox').hasClass('on')){
+                $('#mainBox').find('.pic').addClass('on');
+            }else{
+                $('#mainBox').find('.pic').removeClass('on');
+            }
         }
     }
 });

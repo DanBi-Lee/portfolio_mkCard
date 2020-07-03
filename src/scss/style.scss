@@ -5,7 +5,11 @@
 @import "partials/header";
 
 #mainBox {
-    min-height: 100vh; position: relative; margin-top: -80px; padding: 150px 0px; box-sizing: border-box; display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; position: relative; margin-top: -80px; padding-top: 80px; box-sizing: border-box; display: flex; justify-content: center; align-items: center; background-repeat: no-repeat; background-position: center; 
+
+    &.on {
+        background-image: url('../img/background01.png');
+    }
 
     > .inner {
         display: flex; flex-direction: column; justify-content: center;
@@ -23,20 +27,32 @@
         }
 
         > .pic {
-            position: absolute; width: 500px; height: 800px; margin-left: 50px; background-color: #fa0; bottom: -400px; left: 50%; pointer-events: none; z-index: 10;
+            position: absolute; width: 500px; height: auto; margin-left: 50px; bottom: -500px; left: 50%; pointer-events: none; z-index: 10; transition: 500ms cubic-bezier(0.71, -0.18, 0.58, 1.32);
+
+            &.on {
+                width: 400px; margin-left: 80px; bottom: -440px;
+
+                > img {
+                    box-shadow: 8px 8px 16px rgba(0,0,0,0.3);
+                }
+            }
+
+            > img {
+                width: 100%; height: auto; border-radius: 16px; box-shadow: 40px 40px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.6); box-sizing: border-box; transition: 500ms;
+            }
         }
     }
 }
 
 #introduceBox {
-    min-height: 100vh; background-color: lighten(map-get($color,primary), 35%); padding: 150px 0px; box-sizing: border-box; transition: all 500ms; display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; background-color: lighten(map-get($color,primary), 40%); box-sizing: border-box; transition: all 500ms; display: flex; justify-content: center; align-items: center; background-repeat: no-repeat; background-position: center; background-image: url('../img/background02.png');
 
     &.scrolling {
         transform : skewY(-10deg);
     }
 
     &.on {
-
+        
     }
 
     .inner {
@@ -63,19 +79,53 @@
 }
 
 #howtoBox {
-    min-height: 100vh; padding: 150px 0px; box-sizing: border-box;
+    min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: url('../img/background03.png') no-repeat center;
 
     .inner {
-        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        height: 100%; 
         
         h1 {
             font-size: map-get($fontSize, subTitle); margin-bottom: 40px;
+        }
+
+        .list_example {
+            display: flex; width: 100%;
+
+            > li {
+                width: 25%; padding: 20px; box-sizing: border-box;
+
+                &:nth-child(1) .pic {
+                    background-image: url('../img/howtoBox/icon_homepage.png') ;
+                }
+
+                &:nth-child(2) .pic {
+                    background-image: url('../img/howtoBox/icon_development.png') ;
+                }
+
+                &:nth-child(3) .pic {
+                    background-image: url('../img/howtoBox/icon_illustration.png') ;
+                }
+
+                &:nth-child(4) .pic {
+                    background-image: url('../img/howtoBox/icon_download.png') ;
+                }
+
+                .pic { 
+                    width: 60%; padding-top: 60%; background: center; margin: 0 auto; margin-bottom: 20px; background-size: contain;
+                }
+
+                .content {
+                    dt {
+                        font-weight: 600; font-size: 18px; margin-bottom: 10px;
+                    }
+                }
+            }
         }
     }
 }
 
 #usecaseBox {
-    min-height: 100vh; background-color: lighten(map-get($color,primary), 30%); display: flex; justify-content: center; flex-direction: column; padding: 150px 0px; box-sizing: border-box; transition: all 500ms;
+    min-height: 100vh; background-color: lighten(map-get($color,primary), 42%); display: flex; justify-content: center; flex-direction: column; box-sizing: border-box; transition: all 500ms; background-position: center; background-image: url('../img/background04.png');
 
     &.scrolling {
         transform : skewY(-10deg);
@@ -94,8 +144,20 @@
             > li {
                 border-radius: 8px; padding: 20px; transition: all 600ms; display: flex; align-items: center;
 
+                &:nth-child(1) > .pic {
+                    background-color: #b089ff; background-image: url('../img/usecaseBox/icon_1.png');
+                }
+
+                &:nth-child(2) > .pic {
+                    background-color: #faa72b; background-image: url('../img/usecaseBox/icon_2.png');
+                }
+
+                &:nth-child(3) > .pic {
+                    background-color: #f05a86; background-image: url('../img/usecaseBox/icon_3.png');
+                }
+
                 > .pic {
-                    width: 80px; height: 80px; background-color: #fa0; margin-right: 20px; border-radius: 8px;
+                    width: 80px; height: 80px; background: center no-repeat;margin-right: 20px; border-radius: 8px;
                 }
 
                 + li {
@@ -123,10 +185,27 @@
 }
 
 #exampleBox {
-    height: 100vh;
+    height: 100vh; position: relative; background-position: center; background-image: url('../img/background05.png');
 
     .inner {
-        display: flex; justify-content: center; align-items: center;
+        display: flex; flex-direction: column; justify-content: center; align-items: center; 
+
+        > h1 {
+            margin-top: -160px;
+        }
+
+        >.box_img {
+            position: absolute; left: 0px; bottom: 15%; width: calc(248px *10);
+
+            > ul {
+                > li {
+                    width: 248px; float: left;
+                    > img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
     }
 }
 
