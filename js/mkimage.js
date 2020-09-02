@@ -14,9 +14,10 @@ function render(node) {
   
 var card = $('.card')[0];
 performance.now();
-render(card);
+// render(card);
 
 $('.download').on('click', function(){
+  render(card);
   domtoimage.toPng(card).then(function (dataUrl){
     saveAs(dataUrl, "pretty image.png");
   }).catch(function (error) {
@@ -116,7 +117,6 @@ function Tabmenu(button, box){
     imageData['text'][data] = $(this).attr('value');
     //   $('#mkimageBox .card').find(outputDom['text'][data]).text(imageData['text'][data]);
     mkDom();
-    render(card);
     });
   }
 
@@ -139,7 +139,6 @@ function Tabmenu(button, box){
                 //     backgroundImage : 'url(' + imageData.img + ')'
                 // });
                 mkDom();
-                render(card);
             };
             reader.readAsDataURL(file);
         }
@@ -194,7 +193,6 @@ function selectImg(){
         //     backgroundImage : 'url(' + imageData.img + ')'
         // });
         mkDom();
-        render(card);
     });
 }
 
@@ -251,7 +249,6 @@ function changeFont(data){
         imageData['font'][data] = $(this).attr('data-font');
         console.log(imageData['font'][data]);
         mkDom();
-        render(card);
       });
 }
 
