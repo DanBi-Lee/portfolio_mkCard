@@ -6,13 +6,13 @@ function init(){
     function setPreviewImage(){
         var previewHeight = parseInt($imgPreview.css('height'));
         var scale = previewHeight / imgDomHeight;
-        console.log('test');
-
         $mkImgDom.css({'transform' : 'scale(' + scale + ')'});
     }
     
     $(window).load(setPreviewImage);
-    $(window).on('resize', setPreviewImage);
+    $(window).on('resize', function(){
+        setTimeout(setPreviewImage, 500);
+    });
 }
 
 init();
