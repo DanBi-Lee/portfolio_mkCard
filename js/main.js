@@ -1,27 +1,35 @@
-var $boxs = $('[id$="Box"]');
-var posArr = [];
+var $boxList = $('[id$="Box"]');
+var positionList;
 var posRange = 100;
 
-$boxs.each(function(){
-    posArr.push($(this).offset().top);
-});
 
-posArr.push( $boxs.last().offset().top + $boxs.last().outerHeight() + posRange );
+function setPositionList(){
+    positionList = [];
+    $boxList.each(function(){
+        positionList.push($(this).offset().top);
+    });
+    
+    positionList.push( $boxList.last().offset().top + $boxList.last().outerHeight() + posRange );
+}
+
+setPositionList();
+
+$(window).on('resize', setPositionList);
 
 $(window).on('scroll', function(){
     var scroll = $(this).scrollTop();
 
     // 스크롤 중 애니메이션
-    $boxs.addClass('scrolling');
+    $boxList.addClass('scrolling');
     clearTimeout(action);
     var action = setTimeout(function(){
-        $boxs.removeClass('scrolling');
+        $boxList.removeClass('scrolling');
     }, 250);
 
-    for(var i =0; i < posArr.length; i++){
-        if( scroll >= posArr[i] - posRange && scroll < posArr[i+1] - posRange ){
-            $boxs.removeClass('on');
-            $boxs.eq(i).addClass('on');
+    for(var i =0; i < positionList.length; i++){
+        if( scroll >= positionList[i] - posRange && scroll < positionList[i+1] - posRange ){
+            $boxList.removeClass('on');
+            $boxList.eq(i).addClass('on');
 
             if($('#introduceBox').hasClass('on')){
                 $('#mainBox').find('.pic').addClass('on');
@@ -32,7 +40,7 @@ $(window).on('scroll', function(){
     }
 });
 
-$boxs.on('mousewheel', function(event, delta){
+$boxList.on('mousewheel', function(event, delta){
     event.preventDefault();
 
     var _this = $(this);
@@ -41,7 +49,7 @@ $boxs.on('mousewheel', function(event, delta){
     if(delta > 0 && index !== 0 ){
         var prev_pos = $(this).prev().offset().top;
         $('html, body').stop().animate({scrollTop: prev_pos}, 1000, "easeOutBack");
-    }else if(delta <= 0 && index !== $boxs.length-1 ){
+    }else if(delta <= 0 && index !== $boxList.length-1 ){
         var next_pos = $(this).next().offset().top;
         $('html, body').stop().animate({scrollTop: next_pos}, 1000, "easeOutBack");
     }
