@@ -30,6 +30,7 @@
     "gulp-gh-pages": "^0.5.4",
     "gulp-html-tag-include": "^1.0.1",
     "gulp-sass": "^4.1.0",
+    "lodash.template": "^4.5.0",
     "node-sass": "^4.14.1",
     "open": "^8.0.1",
     "uglifyify": "^5.0.2"
