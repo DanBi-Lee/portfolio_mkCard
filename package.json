@@ -33,6 +33,7 @@
     "lodash.template": "^4.5.0",
     "node-sass": "^4.14.1",
     "open": "^8.0.1",
+    "pug": "^3.0.2",
     "uglifyify": "^5.0.2"
   },
   "browserslist": [
