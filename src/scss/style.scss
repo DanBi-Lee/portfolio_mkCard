@@ -44,16 +44,12 @@
     }
 }
 
+.scrolling #introduceBox, .scrolling #usecaseBox {
+    transform : skewY(-10deg) !important;
+}
+
 #introduceBox {
     min-height: 100vh; background-color: lighten(map-get($color,primary), 40%); box-sizing: border-box; transition: all 500ms; display: flex; justify-content: center; align-items: center; background-repeat: no-repeat; background-position: center; background-image: url('../img/background02.png');
-
-    &.scrolling {
-        transform : skewY(-10deg);
-    }
-
-    &.on {
-        
-    }
 
     .inner {
         display: flex; flex-direction: column; justify-content: center;
@@ -126,10 +122,6 @@
 
 #usecaseBox {
     min-height: 100vh; background-color: lighten(map-get($color,primary), 42%); display: flex; justify-content: center; flex-direction: column; box-sizing: border-box; transition: all 500ms; background-position: center; background-image: url('../img/background04.png');
-
-    &.scrolling {
-        transform : skewY(-10deg);
-    }
 
     .inner {
         height: auto; display: flex; flex-wrap: wrap;
