@@ -21,6 +21,7 @@
     "gulp-webserver": "^0.9.1"
   },
   "dependencies": {
+    "@babel/plugin-syntax-class-properties": "^7.12.13",
     "babelify": "^10.0.0",
     "gift": "0.10.2",
     "gulp-autoprefixer": "^7.0.1",
