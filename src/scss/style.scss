@@ -190,6 +190,7 @@
             position: absolute; left: 0px; bottom: 15%; width: calc(248px *10);
 
             > ul {
+                position: relative;
                 > li {
                     width: 248px; float: left;
                     > img {
