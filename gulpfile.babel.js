@@ -32,6 +32,11 @@ const routes = {
     src: "src/js/**/*.js",
     dest: "build/js",
   },
+  data: {
+    watch: "src/data/**/*.json",
+    src: "src/data/**/*.json",
+    dest: "build/data",
+  },
 };
 
 const html = () =>
@@ -65,6 +70,9 @@ const js = () =>
     )
     .pipe(gulp.dest(routes.js.dest));
 
+const jsonData = () =>
+  gulp.src(routes.data.src).pipe(gulp.dest(routes.data.dest));
+
 const gh = () => gulp.src("build/**/*").pipe(ghPages());
 
 const watch = () => {
@@ -76,7 +84,7 @@ const watch = () => {
 
 const prepare = gulp.series([clean, img]);
 
-const assets = gulp.series([html, styles, js]);
+const assets = gulp.series([html, styles, js, jsonData]);
 
 const live = gulp.parallel([webserver, watch]);
 

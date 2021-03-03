@@ -1,9 +1,14 @@
 import DataToDom from "./dataToDom";
+import FontList from "./FontList";
 import TabMenu from "./tabMenu";
 
-const optionTab = new TabMenu(".option");
-const fontTab = new TabMenu(".font_box");
+const optionTab = new TabMenu();
+const fontTab = new TabMenu();
+const fontList = new FontList();
 const mkDom = new DataToDom();
+
+optionTab.init(".option");
+fontTab.init(".font_box");
 
 var $mkimageBox = $("#mkimageBox");
 

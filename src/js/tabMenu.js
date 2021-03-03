@@ -1,21 +1,16 @@
 class TabMenu {
-  constructor(selector) {
-    this.$tabBox = document.querySelector(selector);
+  init = (selsector) => {
+    this.$tabBox = document.querySelector(selsector);
     this.$btnBox = this.$tabBox.querySelector(".btn_box");
     this.$contentBox = this.$tabBox.querySelector(".content_box");
     this.buttonList = [...this.$btnBox.children];
     this.contentList = [...this.$contentBox.children];
-
-    this.init();
-  }
-
-  init = () => {
     this.handlingTabButton();
   };
 
   handlingTabButton = () => {
     const event = (e) => {
-      if (!e.target.closest("li")) {
+      if (!e.target.closest(".btn_box li")) {
         return;
       }
       const index = this.buttonList.indexOf(e.target.closest("li"));
