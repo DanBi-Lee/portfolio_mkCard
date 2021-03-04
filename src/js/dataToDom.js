@@ -26,7 +26,7 @@ class DataToDom {
     this.handlingFont();
   };
 
-  cardDom = new CardDom(".mk_img_dom");
+  cardDom = new CardDom(".mk_img_dom .card");
 
   setData = (data) => {
     console.log("데이터 세팅", data);

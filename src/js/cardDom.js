@@ -15,7 +15,6 @@ class CardDom {
       return;
     }
     this.$cardWrap.innerHTML = `
-        <div class="card">
             <div class="card_img">
                 <div class="bg_color"></div>
             </div>
@@ -25,7 +24,6 @@ class CardDom {
                     <p class="desc">${this.data.text.sub}</p>
                 </div>
             </div>
-        </div>
       `;
 
     this.$mainText = document.querySelector(".title");
