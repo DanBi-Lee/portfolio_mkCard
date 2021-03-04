@@ -3,33 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="https://kit.fontawesome.com/f3b31dec81.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/f3b31dec81.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/mkimage.css">
-	<script type="text/javascript" src="js/jQuery/jquery-1.7.1.min.js"></script>	
-	<script type="text/javascript" src="js/jQuery/jquery.easing.1.3.js"></script> 
-	<script src="js/jQuery/jquery.mousewheel.min.js"></script>
     <title>이미지 제작</title>
 </head>
 <body>
-<!-- <header id="headBox">
-     <div class="inner">
-         <h1><a href="./"><i class="fas fa-home"></i>home</a></h1>
-         <nav class="gnb">
-             <ul>
-                 <li>
-                     <a href="#">menu</a>
-                 </li>
-                 <li>
-                     <a href="#">menu</a>
-                 </li>
-                 <li>
-                     <a href="#">menu</a>
-                 </li>
-             </ul>
-             <a href="mkimage.html" class="btn_main">시작하기</a>
-         </nav>
-     </div>
- </header> -->
 <section id="howtoBox">
     <div class="inner">
         <h1 class="hidden">test</h1>
@@ -39,7 +17,7 @@
     <div class="inner">
         <h1 class="hidden">이미지 만들기</h1>
         <div class="option">
-            <ul class="step_list">
+            <ul class="step_list btn_box">
                 <li class="on">
                     <button>텍스트</button>
                 </li>
@@ -53,7 +31,7 @@
                     <button>색상</button>
                 </li>
             </ul>
-            <ul class="option_box">
+            <ul class="option_box content_box">
                 <li class="on">
                     <article class="text_box">
                         <form action="#">
@@ -62,11 +40,11 @@
                                 <ul>
                                     <li>
                                         <label for="inputMainText">메인 텍스트</label>
-                                        <input type="text" id="inputMainText" name="inputMainText">
+                                        <input type="text" id="inputMainText" name="inputMainText" data-text="main">
                                     </li>
                                     <li>
                                         <label for="inputSubText">서브 텍스트</label>
-                                        <input type="text" id="inputSubText" name="inputSubText">
+                                        <input type="text" id="inputSubText" name="inputSubText" data-text="sub">
                                     </li>
                                 </ul>
                                 <button type="reset" class="reset btn">텍스트 지우기</button>
@@ -112,7 +90,7 @@
                 </li>
                 <li>
                     <article class="font_box">
-                        <ul class="header_font">
+                        <ul class="header_font btn_box">
                             <li class="on">
                                 <button class="btn">
                                     메인
@@ -124,14 +102,14 @@
                                 </button>
                             </li>
                         </ul>
-                        <ul class="content_font">
+                        <ul class="content_font content_box">
                             <li class="main on">
-                                <ul class="font_list">
+                                <ul class="font_list" data-font="main">
 
                                 </ul>
                             </li>
                             <li class="sub">
-                                <ul class="font_list">
+                                <ul class="font_list" data-font="sub">
                                     
                                 </ul>
                             </li>
@@ -146,18 +124,9 @@
             </ul>
         </div>
         <div class="preview">
-            <img src="./img/transparent.png" alt="" id="imgPreview">
             <div class="mk_img_dom">
                 <div class="card">
-                    <div class="card_img">
-                        <div class="bg_color"></div>
-                    </div>
-                    <div class="card_content">
-                        <div class="text">
-                            <strong class="title">제목</strong>
-                            <p class="desc">요약 텍스트</p>
-                        </div>
-                    </div>
+                    <!-- js 코드로 들어감 -->
                 </div>
             </div>
             <button class="download btn">이미지 저장</button>
@@ -180,10 +149,6 @@
          </small>
      </div>
  </footer> -->
- <script src="js/lib/dom-to-image.min.js"></script>
-<script src="js/lib/FileSaver.min.js"></script>
-<script src="js/fonts.js"></script>
-<script src="js/setPreviewImage.js"></script>
-<script src="js/mkimage.js"></script>
+<script type="module" src="js/mkimage.js"></script>
 </body>
 </html>

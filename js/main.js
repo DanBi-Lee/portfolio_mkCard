@@ -1,56 +1,13 @@
-var $boxList = $('[id$="Box"]');
-var positionList;
-var posRange = 100;
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+"use strict";function _toConsumableArray(t){return _arrayWithoutHoles(t)||_iterableToArray(t)||_unsupportedIterableToArray(t)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(t,e){if(t){if("string"==typeof t)return _arrayLikeToArray(t,e);var r=Object.prototype.toString.call(t).slice(8,-1);return"Object"===r&&t.constructor&&(r=t.constructor.name),"Map"===r||"Set"===r?Array.from(t):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?_arrayLikeToArray(t,e):void 0}}function _iterableToArray(t){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(t))return Array.from(t)}function _arrayWithoutHoles(t){if(Array.isArray(t))return _arrayLikeToArray(t)}function _arrayLikeToArray(t,e){(null==e||e>t.length)&&(e=t.length);for(var r=0,i=new Array(e);r<e;r++)i[r]=t[r];return i}function _classCallCheck(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var AutoSlider=function t(e){var r=this,i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0;_classCallCheck(this,t),this.init=function(){r.animation(),r.handlingAnimation()},this.animation=function(){r.timer=requestAnimationFrame(r.move)},this.stopAnimation=function(){window.cancelAnimationFrame(r.timer)},this.move=function(){r.left>r.image_width&&(r.left=0,r.$imageBox.appendChild(_toConsumableArray(r.$imageBox.querySelectorAll("li"))[0])),r.left+=1,r.$imageBox.style.left="".concat(-r.left,"px"),r.animation()},this.handlingAnimation=function(){r.$imageBox.addEventListener("mouseenter",r.stopAnimation),r.$imageBox.addEventListener("mouseleave",r.animation)},this.$imageBox=document.querySelector(e),this.$imageLi=this.$imageBox.querySelector("li"),this.image_width=parseInt(window.getComputedStyle(this.$imageLi).width),this.left=i,this.init()},_default=AutoSlider;exports.default=_default;
 
+},{}],2:[function(require,module,exports){
+"use strict";var _autoSlider=_interopRequireDefault(require("./autoSlider")),_myParallex=_interopRequireDefault(require("./myParallex")),_wheelMotion=_interopRequireDefault(require("./wheelMotion"));function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}var myParallex=new _myParallex.default('[id$="Box"]',250),wheelMotion=new _wheelMotion.default('[id$="Box"]'),imageSlider=new _autoSlider.default(".box_img ul");
 
-function setPositionList(){
-    positionList = [];
-    $boxList.each(function(){
-        positionList.push($(this).offset().top);
-    });
-    
-    positionList.push( $boxList.last().offset().top + $boxList.last().outerHeight() + posRange );
-}
+},{"./autoSlider":1,"./myParallex":3,"./wheelMotion":4}],3:[function(require,module,exports){
+"use strict";function _toConsumableArray(t){return _arrayWithoutHoles(t)||_iterableToArray(t)||_unsupportedIterableToArray(t)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(t,e){if(t){if("string"==typeof t)return _arrayLikeToArray(t,e);var o=Object.prototype.toString.call(t).slice(8,-1);return"Object"===o&&t.constructor&&(o=t.constructor.name),"Map"===o||"Set"===o?Array.from(t):"Arguments"===o||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(o)?_arrayLikeToArray(t,e):void 0}}function _iterableToArray(t){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(t))return Array.from(t)}function _arrayWithoutHoles(t){if(Array.isArray(t))return _arrayLikeToArray(t)}function _arrayLikeToArray(t,e){(null==e||e>t.length)&&(e=t.length);for(var o=0,r=new Array(e);o<e;o++)r[o]=t[o];return r}function _classCallCheck(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function _defineProperties(t,e){for(var o=0;o<e.length;o++){var r=e[o];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function _createClass(t,e,o){return e&&_defineProperties(t.prototype,e),o&&_defineProperties(t,o),t}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var MyParallex=function(){function t(e,o){var r=this;_classCallCheck(this,t),this._setPositionList=function(t){var e=t.map(function(t){return t.offsetTop});return e.push(t[t.length-1].offsetTop+t[t.length-1].clientHeight+r.posRange),e},this._scrollAnimation=function(t){var e=t.currentTarget.scrollY;r._scrollingEffect(),r._activate(e)},this._scrollAnimationTimer=null,this._scrollingEffect=function(){r.$body.classList.add("scrolling"),r._scrollAnimationTimer&&clearTimeout(r._scrollAnimationTimer),r._scrollAnimationTimer=setTimeout(function(){r.$body.classList.remove("scrolling")},300)},this._activate=function(t){console.log(r.positionList);for(var e=0;e<r.positionList.length;e++)t>=r.positionList[e]-r.posRange&&t<r.positionList[e+1]-r.posRange&&(r.boxList.forEach(function(t){t.classList.remove("on")}),r.boxList[e].classList.add("on"),"introduceBox"===r.boxList[e].id?(console.log(r.boxList[e-1].querySelector(".pic")),document.querySelector("#mainBox .pic").classList.add("on")):document.querySelector("#mainBox .pic").classList.remove("on"))},this.boxList=_toConsumableArray(document.querySelectorAll(e)),this.$body=document.querySelector("body"),this.posRange=o,this.positionList=this._setPositionList(this.boxList),this.init()}return _createClass(t,[{key:"init",value:function(){this._handlingResize(),this._handlingScroll()}},{key:"_handlingResize",value:function(){var t=this;window.addEventListener("resize",function(){setTimeout(function(){t.positionList=t._setPositionList(t.boxList)},1e3)})}},{key:"_handlingScroll",value:function(){window.addEventListener("scroll",this._scrollAnimation)}}]),t}(),_default=MyParallex;exports.default=_default;
 
-setPositionList();
+},{}],4:[function(require,module,exports){
+"use strict";function _toConsumableArray(t){return _arrayWithoutHoles(t)||_iterableToArray(t)||_unsupportedIterableToArray(t)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(t,e){if(t){if("string"==typeof t)return _arrayLikeToArray(t,e);var r=Object.prototype.toString.call(t).slice(8,-1);return"Object"===r&&t.constructor&&(r=t.constructor.name),"Map"===r||"Set"===r?Array.from(t):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?_arrayLikeToArray(t,e):void 0}}function _iterableToArray(t){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(t))return Array.from(t)}function _arrayWithoutHoles(t){if(Array.isArray(t))return _arrayLikeToArray(t)}function _arrayLikeToArray(t,e){(null==e||e>t.length)&&(e=t.length);for(var r=0,o=new Array(e);r<e;r++)o[r]=t[r];return o}function _classCallCheck(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var WheelMotion=function t(e){var r=this;_classCallCheck(this,t),this.$body=document.querySelector("body"),this.MIN_SIZE=900,this.init=function(){r.onMouseWheel()},this.onMouseWheel=function(){r.$body.addEventListener("wheel",r.motion,{passive:!1})},this.motionCondition=function(t){var e=window.innerWidth>=r.MIN_SIZE,o=!!t.target.closest(r.selector);return e&&o},this.motion=function(t){if(r.motionCondition(t)){t.preventDefault(),console.log(t);var e=r.boxList.indexOf(t.target.closest(r.selector));t.deltaY>0&&0!==e&&e!==r.boxList.length-1?r.boxList[e+1].scrollIntoView({behavior:"smooth"}):t.deltaY<0&&0!==e&&r.boxList[e-1].scrollIntoView({behavior:"smooth"})}},this.selector=e,this.boxList=_toConsumableArray(document.querySelectorAll(e)),this.init()},_default=WheelMotion;exports.default=_default;
 
-$(window).on('resize', setPositionList);
-
-$(window).on('scroll', function(){
-    var scroll = $(this).scrollTop();
-
-    // 스크롤 중 애니메이션
-    $boxList.addClass('scrolling');
-    clearTimeout(action);
-    var action = setTimeout(function(){
-        $boxList.removeClass('scrolling');
-    }, 250);
-
-    for(var i =0; i < positionList.length; i++){
-        if( scroll >= positionList[i] - posRange && scroll < positionList[i+1] - posRange ){
-            $boxList.removeClass('on');
-            $boxList.eq(i).addClass('on');
-
-            if($('#introduceBox').hasClass('on')){
-                $('#mainBox').find('.pic').addClass('on');
-            }else{
-                $('#mainBox').find('.pic').removeClass('on');
-            }
-        }
-    }
-});
-
-$boxList.on('mousewheel', function(event, delta){
-    event.preventDefault();
-
-    var _this = $(this);
-    var index = _this.index();
-
-    if(delta > 0 && index !== 0 ){
-        var prev_pos = $(this).prev().offset().top;
-        $('html, body').stop().animate({scrollTop: prev_pos}, 1000, "easeOutBack");
-    }else if(delta <= 0 && index !== $boxList.length-1 ){
-        var next_pos = $(this).next().offset().top;
-        $('html, body').stop().animate({scrollTop: next_pos}, 1000, "easeOutBack");
-    }
-});
+},{}]},{},[2]);
