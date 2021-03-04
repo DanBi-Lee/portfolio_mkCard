@@ -1,5 +1,11 @@
 "use strict";
 
+import Debouncing from "./util/debouncing";
+import Throttling from "./util/throttling";
+
+const throttling = new Throttling();
+const debouncing = new Debouncing();
+
 class MyParallex {
   constructor(selector, range) {
     this.boxList = [...document.querySelectorAll(selector)];
@@ -31,15 +37,17 @@ class MyParallex {
         this.positionList = this._setPositionList(this.boxList);
       }, 1000);
     };
-    window.addEventListener("resize", setPositionList);
+    window.addEventListener("resize", debouncing.debounce(setPositionList));
   }
 
   _handlingScroll() {
-    window.addEventListener("scroll", this._scrollAnimation);
+    window.addEventListener("scroll", (e) => {
+      throttling.throttle(this._scrollAnimation, 200);
+    });
   }
 
-  _scrollAnimation = (e) => {
-    const scrollTop = e.currentTarget.scrollY;
+  _scrollAnimation = () => {
+    const scrollTop = window.scrollY;
     this._scrollingEffect();
     this._activate(scrollTop);
   };
@@ -57,7 +65,6 @@ class MyParallex {
   };
 
   _activate = (scrollTop) => {
-    console.log(this.positionList);
     for (let index = 0; index < this.positionList.length; index++) {
       if (
         scrollTop >= this.positionList[index] - this.posRange &&
@@ -69,7 +76,6 @@ class MyParallex {
         this.boxList[index].classList.add("on");
 
         if (this.boxList[index].id === "introduceBox") {
-          console.log(this.boxList[index - 1].querySelector(".pic"));
           document.querySelector("#mainBox .pic").classList.add("on");
         } else {
           document.querySelector("#mainBox .pic").classList.remove("on");

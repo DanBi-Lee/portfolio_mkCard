@@ -1,4 +1,7 @@
+import Debouncing from "./util/debouncing";
 import DomScale from "./util/domScale";
+
+const debouncing = new Debouncing();
 
 class Preview {
   constructor() {
@@ -17,7 +20,9 @@ class Preview {
   };
 
   handlingResize = () => {
-    window.addEventListener("resize", this.setScale);
+    window.addEventListener("resize", () =>
+      debouncing.debounce(this.setScale, 200)
+    );
   };
 }
 

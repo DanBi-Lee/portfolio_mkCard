@@ -1,6 +1,9 @@
 import CardDom from "./cardDom";
 import TabMenu from "./tabMenu";
 import UploadImg from "./uploadImg";
+import Throttling from "./util/throttling";
+
+const throttling = new Throttling();
 
 class DataToDom {
   imageData = {
@@ -51,7 +54,9 @@ class DataToDom {
       };
       this.setData(data);
     };
-    $textForm.addEventListener("keyup", event);
+    $textForm.addEventListener("keyup", (e) =>
+      throttling.throttle(() => event(e), 50)
+    );
   };
 
   handlingBGImage = () => {

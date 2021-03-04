@@ -1,3 +1,9 @@
+"use strict";
+
+import Debouncing from "./util/debouncing";
+
+const debouncing = new Debouncing();
+
 class WheelMotion {
   $body = document.querySelector("body");
   MIN_SIZE = 900;
@@ -14,7 +20,11 @@ class WheelMotion {
   };
 
   onMouseWheel = () => {
-    this.$body.addEventListener("wheel", this.motion, { passive: false });
+    this.$body.addEventListener(
+      "wheel",
+      (e) => debouncing.debounce(this.motion.call(null, e), 200),
+      { passive: false }
+    );
   };
 
   motionCondition = (e) => {
@@ -29,7 +39,6 @@ class WheelMotion {
       return;
     }
     e.preventDefault();
-    console.log(e);
     const index = this.boxList.indexOf(e.target.closest(this.selector));
     if (e.deltaY > 0 && index !== 0 && index !== this.boxList.length - 1) {
       this.boxList[index + 1].scrollIntoView({ behavior: "smooth" });
