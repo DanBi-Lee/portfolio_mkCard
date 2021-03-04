@@ -1,5 +1,6 @@
 import CardDom from "./cardDom";
 import TabMenu from "./tabMenu";
+import UploadImg from "./uploadImg";
 
 class DataToDom {
   imageData = {
@@ -12,17 +13,6 @@ class DataToDom {
       main: "CookieRun-Regular",
       sub: "Godo",
     },
-    // filter: {
-    //   grayscale: 0,
-    //   blur: 0,
-    //   invert: 0,
-    //   contrast: 1,
-    //   sepia: 0,
-    // },
-    // filterBox: {
-    //   opacity: 0.3,
-    //   color: "#ffffff",
-    // },
   };
 
   constructor() {
@@ -67,6 +57,17 @@ class DataToDom {
   handlingBGImage = () => {
     const $searchResult = document.querySelector(".contents_imgbox");
     $searchResult.addEventListener("click", this._selectImg);
+
+    const uploadImg = new UploadImg("#uploadImgfile");
+    uploadImg.handlingUpload(this._setImg);
+  };
+
+  _setImg = (imgURL) => {
+    const data = {
+      ...this.imageData,
+      img: imgURL,
+    };
+    this.setData(data);
   };
 
   _selectImg = (e) => {
