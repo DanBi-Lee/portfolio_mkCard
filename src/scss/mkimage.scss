@@ -60,16 +60,14 @@
         }
 
         > .preview {
-            width: 100%; height: 100%; background-color: #2f353a; display: flex; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; flex-direction: column;
+            width: 100%; height: 100%; background-color: #2f353a; display: flex; justify-content: center; align-items: center;  flex-direction: column;
 
             > img {
                 width: 100%; max-width: 740px; height: auto;  position: relative; margin-bottom: 20px;
             }
 
             .mk_img_dom {
-                // position: fixed; z-index: 10; top: 20px; left: 20px; z-index: -999; opacity: 0;
-                // position: fixed; z-index: 10; top: 20px; left: 20px;
-                position: absolute; margin-top: -32px; transform-origin: center top; box-shadow: 18px 18px 30px rgba(0,0,0,0.6), -18px -18px 30px rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
+                box-shadow: 18px 18px 30px rgba(0,0,0,0.6), -18px -18px 30px rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
         
                 .card {
                     width: 740px; height: 400px; background-color: #2f353a; position: relative; z-index: 1;
@@ -103,6 +101,7 @@
 
             .download {
                 background-color: #ecf0f3;
+                margin-top: 20px;
             }
         }
     }
@@ -133,7 +132,7 @@
                 }
 
                 .mk_img_dom {
-                    top: 20px; transform: initial; margin-top: 0px;
+                    top: 0px; transform: initial; margin-top: 0px;
                 }
     
                 .download {
