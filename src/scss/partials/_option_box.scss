@@ -71,10 +71,10 @@
             }
 
             > ul {
-                width: 100%; height: auto; display: flex; flex-wrap: wrap; padding: 10px; box-sizing: border-box;
+                width: 100%; height: auto; display: flex; flex-wrap: wrap; padding: 10px; box-sizing: border-box; position: relative; background-color: #eceff5;
 
                 > li {
-                    width: 31.333%; background-color: #fa0; margin: 1%; padding-top: 16%; position: relative;
+                    width: 31.333%; background-color: #fff; margin: 1%; padding-top: 16%; position: relative;
 
                     .search_item {
                         position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-repeat: no-repeat; background-size: cover; background-position: center; border: none;
