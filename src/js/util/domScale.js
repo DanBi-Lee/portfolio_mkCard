@@ -3,8 +3,10 @@ class DomScale {
     this.$parent = document.querySelector(parent);
     this.$children = document.querySelector(children);
 
-    this.setParentRatio(this.$parent);
-    this.setChilrenRatio(this.$children);
+    window.addEventListener("load", () => {
+      this.setParentRatio(this.$parent);
+      this.setChilrenRatio(this.$children);
+    });
   }
 
   setParentRatio(parent) {

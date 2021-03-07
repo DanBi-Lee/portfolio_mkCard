@@ -11,7 +11,7 @@ const fontList = new FontList();
 const serachImg = new SearchImage(".search_img");
 const mkDom = new DataToDom();
 const downlaod = new Download(".download");
-const preview = new Preview();
+new Preview();
 
 optionTab.init(".option");
 fontTab.init(".font_box");
