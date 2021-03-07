@@ -3,8 +3,6 @@ class DomScale {
     this.$parent = document.querySelector(parent);
     this.$children = document.querySelector(children);
 
-    console.log(this.$parent, this.$children);
-
     this.setParentRatio(this.$parent);
     this.setChilrenRatio(this.$children);
   }
@@ -20,8 +18,8 @@ class DomScale {
   }
 
   setScale() {
-    console.log("얍~~~");
     this.setParentRatio(this.$parent);
+    console.log(this.$parent.clientWidth, this.$children.clientWidth);
     if (this.parentRatio < this.childrenRatio) {
       const scale =
         (this.$parent.clientWidth - 30) / this.$children.clientWidth;

@@ -5,7 +5,9 @@ const debouncing = new Debouncing();
 
 class Preview {
   constructor() {
-    this.init();
+    window.addEventListener("load", () => {
+      this.init();
+    });
   }
 
   init = () => {
