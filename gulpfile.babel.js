@@ -51,11 +51,11 @@ const img = () =>
 
 const styles = () =>
   gulp
-    .src(routes.scss.src)
+    .src(routes.scss.src, { sourcemaps: true })
     .pipe(sass().on("error", sass.logError))
     .pipe(autoPrefixer())
     .pipe(miniCSS())
-    .pipe(gulp.dest(routes.scss.dest));
+    .pipe(gulp.dest(routes.scss.dest, { sourcemaps: true }));
 
 const js = () =>
   gulp
