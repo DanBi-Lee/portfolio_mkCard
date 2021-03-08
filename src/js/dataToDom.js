@@ -23,7 +23,7 @@ class DataToDom {
       },
       bg_color: {
         "background-color": "#000000",
-        opacity: 0.8,
+        opacity: 0.6,
       },
       blend_layer: {
         "mix-blend-mode": "",
