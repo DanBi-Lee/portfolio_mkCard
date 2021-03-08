@@ -11,8 +11,11 @@ class MyParallex {
     this.boxList = [...document.querySelectorAll(selector)];
     this.$body = document.querySelector("body");
     this.posRange = range;
-    this.positionList = this._setPositionList(this.boxList);
+    this.positionList = [];
 
+    window.addEventListener("load", () => {
+      this.positionList = this._setPositionList(this.boxList);
+    });
     this.init();
   }
 
@@ -23,28 +26,32 @@ class MyParallex {
         array[array.length - 1].clientHeight +
         this.posRange
     );
+    console.log(list);
     return list;
   };
 
-  init() {
+  init = () => {
     this._handlingResize();
     this._handlingScroll();
-  }
+  };
 
   _handlingResize() {
     const setPositionList = () => {
+      console.log("실행");
       setTimeout(() => {
         this.positionList = this._setPositionList(this.boxList);
       }, 1000);
     };
-    window.addEventListener("resize", debouncing.debounce(setPositionList));
+    window.addEventListener("resize", () =>
+      debouncing.debounce(setPositionList)
+    );
   }
 
-  _handlingScroll() {
+  _handlingScroll = () => {
     window.addEventListener("scroll", (e) => {
       throttling.throttle(this._scrollAnimation, 200);
     });
-  }
+  };
 
   _scrollAnimation = () => {
     const scrollTop = window.scrollY;
