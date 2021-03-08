@@ -143,7 +143,61 @@
         }
     }
 
-    .color_box {
-
+    .decoration_box {
+        padding: 20px;
+        box-sizing: border-box;
+    
+        fieldset {
+            max-width: 500px;
+            height: 100%;
+            padding: 20px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            margin: 0 auto;
+            border: 1px solid #fff;
+            background-color: #ecf0f3;
+            overflow-y: auto;
+        }
+    
+        .input_list {
+            margin-bottom: 40px;
+            
+            > li {
+                margin-bottom: 20px;
+                p {
+                    margin-bottom: 10px;
+                }
+                .input {
+                    margin-left: 20px;
+        
+                    > li {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 10px;
+        
+                        label {
+                            width: 80px;
+                            margin-right: 10px;
+                        }
+        
+                        select {
+                            padding: 4px;
+                        }
+        
+                        input[type="range"] {
+                            width: 100%;
+                            max-width: 300px;
+                        }
+                    }
+                }
+            }
+        }
+    
+        .reset {
+            display: block;
+            margin-left: auto;
+            margin-top: 10px;
+            color: #5f5985;
+        }
     }
 }

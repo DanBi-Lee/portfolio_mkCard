@@ -2,6 +2,7 @@ import CardDom from "./cardDom";
 import TabMenu from "./tabMenu";
 import UploadImg from "./uploadImg";
 import Throttling from "./util/throttling";
+import CardDecoration from "./cardDecoration";
 
 const throttling = new Throttling();
 
@@ -16,6 +17,20 @@ class DataToDom {
       main: "CookieRun-Regular",
       sub: "Godo",
     },
+    decoration: {
+      card_img: {
+        filter: "",
+      },
+      bg_color: {
+        "background-color": "#000000",
+        opacity: 0.8,
+      },
+      blend_layer: {
+        "mix-blend-mode": "",
+        "background-color": "#000000",
+        opacity: 0,
+      },
+    },
   };
 
   constructor() {
@@ -27,6 +42,7 @@ class DataToDom {
     this.handlingText();
     this.handlingBGImage();
     this.handlingFont();
+    this.handlingDeco();
   };
 
   cardDom = new CardDom(".mk_img_dom .card");
@@ -65,6 +81,24 @@ class DataToDom {
 
     const uploadImg = new UploadImg("#uploadImgfile");
     uploadImg.handlingUpload(this._setImg);
+  };
+
+  handlingDeco = () => {
+    const decoration = new CardDecoration(".decoration_box");
+    decoration.$decorationBox.addEventListener("input", (e) => {
+      throttling.throttle(() => {
+        decoration.handlingInputEvent(e);
+        this._setDeco(decoration.decorationState);
+      }, 500);
+    });
+  };
+
+  _setDeco = (decoData) => {
+    const data = {
+      ...this.imageData,
+      decoration: decoData,
+    };
+    this.setData(data);
   };
 
   _setImg = (imgURL) => {

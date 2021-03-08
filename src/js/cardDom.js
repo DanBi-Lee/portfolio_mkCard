@@ -16,7 +16,7 @@ class CardDom {
     }
     this.$cardWrap.innerHTML = `
             <div class="card_img">
-                <div class="bg_color"></div>
+              <div class="bg_color"></div>
             </div>
             <div class="card_content">
                 <div class="text">
@@ -24,6 +24,7 @@ class CardDom {
                     <p class="desc">${this.data.text.sub}</p>
                 </div>
             </div>
+            <div class="blend_layer"></div>
       `;
 
     this.$mainText = document.querySelector(".title");
@@ -32,6 +33,7 @@ class CardDom {
     this.setFontInDom("main");
     this.setFontInDom("sub");
     this.setBGImage();
+    this.setDecoration();
   };
 
   setFontInDom = (text) => {
@@ -40,6 +42,17 @@ class CardDom {
 
   setBGImage = () => {
     this.$cardImg.style["background-image"] = `url(${this.data.img})`;
+  };
+
+  setDecoration = () => {
+    const { decoration } = this.data;
+
+    for (const item in decoration) {
+      const $target = document.querySelector(`.${item}`);
+      for (const prop in decoration[item]) {
+        $target.style[prop] = decoration[item][prop];
+      }
+    }
   };
 }
 

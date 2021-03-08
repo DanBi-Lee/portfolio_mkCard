@@ -19,11 +19,11 @@
                     <button>폰트</button>
                 </li>
                 <li>
-                    <button>색상</button>
+                    <button>꾸미기</button>
                 </li>
             </ul>
             <ul class="option_box content_box">
-                <li class="on">
+                <li>
                     <article class="text_box">
                         <form action="#">
                             <fieldset>
@@ -107,9 +107,75 @@
                         </ul>
                     </article>
                 </li>
-                <li class="color_box">
-                    <article>
-
+                <li class="on">
+                    <article class="decoration_box">
+                        <form id="decoForm">
+                            <fieldset>
+                                <legend class="hidden">이미지 꾸미기</legend>
+                                <ul class="input_list">
+                                    <li>
+                                        <!-- filter : .card_img -->
+                                        <!-- blur, hue -->
+                                        <p>
+                                            배경 이미지 필터
+                                        </p>
+                                        <ul class="input">
+                                            <li>
+                                                <label for="bgImgBlur">흐리기</label>
+                                                <input type="range" name="bgImgBlur" id="bgImgBlur" min="0" max="30" value="0" data-layername="card_img" data-prop="filter" data-propvalue="blur" data-unit="px">
+                                            </li>
+                                            <li>
+                                                <label for="bgImgHue">hue</label>
+                                                <input type="range" name="bgImgHue" id="bgImgHue" min="0" max="360" value="0" data-layername="card_img" data-prop="filter" data-propvalue="hue-rotate" data-unit="deg">
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <!-- 배경색상 조작 : .bg_color -->
+                                        <!-- 색상, 투명도 -->
+                                        <p>
+                                            배경 색상 레이어
+                                        </p>
+                                        <ul class="input">
+                                            <li>
+                                                <label for="bgColorColor">색상</label>
+                                                <input type="color" name="bgColorColor" id="bgColorColor" value="#000000" data-layername="bg_color" data-prop="background-color">
+                                            </li>
+                                            <li>
+                                                <label for="bgColorOpacity">불투명도</label>
+                                                <input type="range" name="bgColorOpacity" id="bgColorOpacity" min="0" max="1" step="0.02" value="0.8" data-layername="bg_color" data-prop="opacity">
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <!-- 전체 보정 : .blend_layer -->
+                                        <!-- 색상, blend모드, 투명도 -->
+                                        <p>
+                                            이미지 전체 레이어
+                                        </p>
+                                        <ul class="input">
+                                            <li>
+                                                <label for="blendLayerMode">블랜드 모드</label>
+                                                <select name="blendLayerMode" id="blendLayerMode" data-layername="blend_layer" data-prop="mix-blend-mode">
+                                                    <option value="screen">스크린</option>
+                                                    <option value="multiply">곱하기</option>
+                                                    <option value="overlay">오버레이</option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                <label for="blendLayerColor">색상</label>
+                                                <input type="color" name="blendLayerColor" id="blendLayerColor" value="#000000" data-layername="blend_layer" data-prop="background-color">
+                                            </li>
+                                            <li>
+                                                <label for="cardBgOpacity">불투명도</label>
+                                                <input type="range" name="cardBgOpacity" min="0" max="1" step="0.02" value="0" data-layername="blend_layer" data-prop="opacity">
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <button type="reset" class="reset btn">리셋 버튼</button>
+                            </fieldset>
+                        </form>
                     </article>
                 </li>
             </ul>
