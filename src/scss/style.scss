@@ -4,6 +4,10 @@
 @import "_common";
 @import "partials/header";
 
+[id$="Box"] .inner{
+    padding: 60px 20px;
+}
+
 #mainBox {
     min-height: 100vh; position: relative; margin-top: -80px; padding-top: 80px; box-sizing: border-box; display: flex; justify-content: center; align-items: center; background-repeat: no-repeat; background-position: center; 
 
@@ -150,6 +154,7 @@
 
                 > .pic {
                     width: 80px; height: 80px; background: center no-repeat;margin-right: 20px; border-radius: 8px;
+                    flex-shrink: 0;
                 }
 
                 + li {
@@ -199,6 +204,101 @@
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 900px){
+    #mainBox {
+        > .inner {
+            > .pic {
+                width: 400px; 
+                left: 50%;
+                top: 50%;
+                margin-left: 50px;
+                margin-top: 200px;
+    
+                &.on {
+                    width: 300px;
+                    margin-top: 300px;
+                }
+            }
+        }
+    }
+    
+    
+    #howtoBox {
+        .inner {
+            .list_example {
+                flex-wrap: wrap;
+    
+                > li {
+                    width: 50%;
+                }
+            }
+        }
+    }
+    
+    #usecaseBox {
+    
+        .inner {
+            > .list_benefit {
+                width: 100%;
+            }
+            > .pic_box {
+                display: none;
+            }
+         }
+    }
+}
+
+@media screen and (max-width: 600px){
+    #mainBox {
+        > .inner {
+            h1 {
+                font-size: map-get($fontSize, mobile_mainTitle);
+
+                + p {
+                    font-size: 24px;
+                }
+            }
+            > .pic {
+                display: none;
+            }
+        }
+    }
+
+    #introduceBox {
+        .inner {
+            h1 {
+                font-size: map-get($fontSize, mobile_mainTitle);
+            }
+        }
+    }
+    
+    
+    #howtoBox {
+        .inner {
+            h1 {
+                font-size: map-get($fontSize, mobile_mainTitle);
+            }
+            .list_example {
+                > li {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    
+    #usecaseBox {
+    
+        .inner {
+            > .list_benefit {
+                width: 100%;
+            }
+            > .pic_box {
+                display: none;
+            }
+         }
     }
 }
 
