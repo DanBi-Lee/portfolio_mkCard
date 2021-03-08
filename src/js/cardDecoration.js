@@ -24,6 +24,34 @@ class CardDecoration {
     this.$decorationBox.addEventListener("input", this.handlingInputEvent);
   };
 
+  onReset = () => {
+    this.$decorationBox.addEventListener("clilck", this.handlingInputEvent);
+  };
+
+  handlingResetEvent = (e) => {
+    const target = e.target;
+    console.log("리셋~");
+
+    if (target.type !== "reset") {
+      return;
+    }
+
+    this.setData({
+      card_img: {
+        filter: "",
+      },
+      bg_color: {
+        "background-color": "#000000",
+        opacity: 0.6,
+      },
+      blend_layer: {
+        "mix-blend-mode": "screen",
+        "background-color": "#000000",
+        opacity: 0,
+      },
+    });
+  };
+
   handlingInputEvent = (e) => {
     const target = e.target;
 
@@ -62,11 +90,10 @@ class CardDecoration {
     const nextData = {
       [layername]: { ...this.decorationState[layername], [prop]: dataValue },
     };
-    this.setDecorationState(nextData);
+    this.setData(nextData);
   };
 
-  setDecorationState = (nextData) => {
-    console.log("얕은 복사", { ...this.decorationState });
+  setData = (nextData) => {
     this.decorationState = { ...this.decorationState, ...nextData };
   };
 }

@@ -14,6 +14,24 @@ class CardText {
     this.$target.addEventListener("input", this.handlingInputEvent);
   };
 
+  onReset = () => {
+    this.$target.addEventListener("clilck", this.handlingInputEvent);
+  };
+
+  handlingResetEvent = (e) => {
+    const target = e.target;
+    console.log("리셋~");
+
+    if (target.type !== "reset") {
+      return;
+    }
+
+    this.setData({
+      main: "",
+      sub: "",
+    });
+  };
+
   handlingInputEvent = (e) => {
     const target = e.target;
 

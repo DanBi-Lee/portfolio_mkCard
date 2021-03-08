@@ -66,6 +66,10 @@ class DataToDom {
       },
       500
     );
+    cardText.$target.addEventListener("click", (e) => {
+      cardText.handlingResetEvent(e);
+      this._setText(cardText.textState);
+    });
   };
 
   handlingBGImage = () => {
@@ -83,6 +87,10 @@ class DataToDom {
         decoration.handlingInputEvent(e);
         this._setDeco(decoration.decorationState);
       }, 500);
+    });
+    decoration.$decorationBox.addEventListener("click", (e) => {
+      decoration.handlingResetEvent(e);
+      this._setDeco(decoration.decorationState);
     });
   };
 
