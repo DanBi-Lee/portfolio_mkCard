@@ -3,6 +3,7 @@ import TabMenu from "./tabMenu";
 import UploadImg from "./uploadImg";
 import Throttling from "./util/throttling";
 import CardDecoration from "./cardDecoration";
+import CardText from "./cardText";
 
 const throttling = new Throttling();
 
@@ -54,24 +55,16 @@ class DataToDom {
   };
 
   handlingText = () => {
-    const $textForm = document.querySelector(".text_box form");
-    const event = (e) => {
-      if (e.target.nodeName !== "INPUT") {
-        return;
-      }
-      const type = e.target.dataset.text;
-      const text = e.target.value;
-      const data = {
-        ...this.imageData,
-        text: {
-          ...this.imageData.text,
-          [type]: text,
-        },
-      };
-      this.setData(data);
-    };
-    $textForm.addEventListener("keyup", (e) =>
-      throttling.throttle(() => event(e), 50)
+    const cardText = new CardText(".text_box form");
+    cardText.$target.addEventListener(
+      "input",
+      (e) => {
+        throttling.throttle(() => {
+          cardText.handlingInputEvent(e);
+          this._setText(cardText.textState);
+        });
+      },
+      500
     );
   };
 
@@ -91,6 +84,14 @@ class DataToDom {
         this._setDeco(decoration.decorationState);
       }, 500);
     });
+  };
+
+  _setText = (text) => {
+    const data = {
+      ...this.imageData,
+      text,
+    };
+    this.setData(data);
   };
 
   _setDeco = (decoData) => {
