@@ -2,6 +2,8 @@
 
 import { saveAs } from "file-saver";
 import DOMToImage from "./domToImage";
+import Loading from "./components/Loading";
+
 class Download {
   constructor(selector) {
     this.$downloadBtn = document.querySelector(selector);
@@ -14,6 +16,8 @@ class Download {
 
   domToImage = new DOMToImage(".card");
 
+  loading = new Loading();
+
   isWorking = false;
 
   handlingDonwload = () => {
@@ -24,10 +28,17 @@ class Download {
     if (this.isWorking) {
       return;
     }
-    this.isWorking = true;
-    const imageData = await this.domToImage.render();
-    this.saveFile(imageData);
-    this.isWorking = false;
+    try {
+      this.isWorking = true;
+      this.loading.open();
+      const imageData = await this.domToImage.render();
+      this.saveFile(imageData);
+    } catch (e) {
+      console.warn(e);
+    } finally {
+      this.isWorking = false;
+      this.loading.close();
+    }
   };
 
   saveFile = (data) => {
